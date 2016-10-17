@@ -17,6 +17,8 @@
  * under the License.
  */
 package sample.rs.service;
+
+import org.apache.cxf.jaxrs.swagger.Swagger2Feature;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.ExportMetricWriter;
 import org.springframework.boot.actuate.metrics.Metric;
@@ -55,6 +57,14 @@ public class SampleRestApplication {
             
         };
     }
-    
-    
+
+    @Bean
+    public Swagger2Feature swagger2Feature() {
+        Swagger2Feature swagger2Feature = new Swagger2Feature();
+        swagger2Feature.setPrettyPrint(true);
+        swagger2Feature.setDescription("Apache CXF SampleRestApplication");
+        swagger2Feature.setTitle("Apache CXF SampleRestApplication");
+
+        return swagger2Feature;
+    }
 }
